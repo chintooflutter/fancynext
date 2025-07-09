@@ -46,14 +46,16 @@ export type FontCategory =
   | 'Gothic'
   | 'Tattoo'
   | 'Cursive'
-  | 'Code Style';
+  | 'Code Style'
+  | 'Fortnite'
+  | 'Aesthetic';
 
 // Used for font definitions in per-page or global font lists
 export type FontConfig = {
   name: string;
   preview: string;
-  style: string;
-  category: string;
+  style: FontStyle;
+  category: FontCategory;
 };
 
 // Optional per-subdomain font generator config
@@ -69,7 +71,7 @@ export type SubdomainConfig = {
 export type FontMap = {
   [style: string]: {
     name: string;
-    style: string;
+    style: FontStyle;
     transform: (text: string) => string;
   };
 };
