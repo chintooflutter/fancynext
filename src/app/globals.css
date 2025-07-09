@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+/* Optional global styles */
+body {
+    @apply bg-white text-gray-900 font-sans;
+  }
