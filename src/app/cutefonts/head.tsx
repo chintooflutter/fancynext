@@ -20,9 +20,7 @@ export default function Head() {
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content="https://cutefonts.fancyletters.org/og-image.png" />
-  
-        {/* Favicon */}
-        <link rel="icon" href="/favicon.ico" />
+        
       </>
     );
   }
