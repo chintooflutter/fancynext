@@ -44,14 +44,7 @@ export default function ContactPage() {
         <p className="mb-4">
           Feel free to reach out to us with any questions, suggestions, or feedback. We value your input and are here to
           assist you in making the most of our Fancy Font Generator Tool.
-        </p>
-        <p className="mb-2">
-          <strong>Email:</strong>{' '}
-          <a href="mailto:info@fancyletters.org" className="text-blue-600 underline">
-            info@fancyletters.org
-          </a>
-        </p>
-        <p><strong>Phone:</strong> Your Phone Number</p>
+        </p>        
       </section>
 
       <section className="mb-8">
@@ -59,14 +52,7 @@ export default function ContactPage() {
         <p className="mb-4">
           If you encounter any issues or need assistance while using our Fancy Font Generator Tool, our dedicated customer
           support team is ready to help. Do not hesitate to contact us for prompt and friendly assistance.
-        </p>
-        <p className="mb-2">
-          <strong>Email:</strong>{' '}
-          <a href="mailto:info@fancyletters.org" className="text-blue-600 underline">
-            info@fancyletters.org
-          </a>
-        </p>
-        <p><strong>Phone:</strong> Support Phone Number</p>
+        </p>                
       </section>
 
       <section className="mb-8">
@@ -104,13 +90,7 @@ export default function ContactPage() {
         <p className="mb-4">
           Your feedback is crucial in helping us improve our Fancy Font Generator Tool. If you have suggestions for new
           features, fonts, or improvements, we want to hear from you!
-        </p>
-        <p className="mb-4">
-          <strong>Email us:</strong>{' '}
-          <a href="mailto:info@fancyletters.org" className="text-blue-600 underline">
-            info@fancyletters.org
-          </a>
-        </p>
+        </p>        
         <p>
           We appreciate your interest in our Fancy Font Generator Tool and look forward to connecting with you. Let is create
           beautiful, stylish, and unique text together!

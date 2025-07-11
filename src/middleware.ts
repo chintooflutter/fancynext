@@ -19,7 +19,11 @@ export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
   const pathname = url.pathname;
 
-  // ✅ Skip for localhost/dev environments
+  const subdomain = host.split('.')[0];
+  const isMainDomain =
+    host === 'fancyletters.org' || host === 'www.fancyletters.org';
+
+  // ✅ Skip in dev/local mode
   if (
     process.env.NODE_ENV !== 'production' ||
     host.includes('localhost') ||
@@ -29,33 +33,27 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const subdomain = host.split('.')[0];
-  const isMainDomain =
-    host === 'fancyletters.org' || host === 'www.fancyletters.org';
-
-  // 🚫 Block main-site-only pages on subdomains
+  // 🔁 Redirect main-domain-only pages to www.fancyletters.org
   if (!isMainDomain && mainDomainOnlyPaths.includes(pathname)) {
-    url.pathname = '/';
-    return NextResponse.redirect(url);
+    return NextResponse.redirect(
+      new URL(`https://www.fancyletters.org${pathname}`)
+    );
   }
 
-  // ✅ Rewrite known subdomains to their respective paths
+  // ✅ Rewrite known subdomains to their paths
   if (validSubdomains.includes(subdomain)) {
     url.pathname = `/${subdomain}`;
     return NextResponse.rewrite(url);
   }
 
-  // 🚫 Redirect unknown subdomains to homepage
+  // 🚫 Redirect unknown subdomains to main homepage
   if (!isMainDomain && !validSubdomains.includes(subdomain)) {
-    url.hostname = 'www.fancyletters.org';
-    url.pathname = '/';
-    return NextResponse.redirect(url);
+    return NextResponse.redirect(new URL('https://www.fancyletters.org/'));
   }
 
   return NextResponse.next();
 }
 
-// ✅ Apply to all routes except static files and internals
 export const config = {
   matcher: ['/((?!api|_next/static|_next/image|favicon\\.ico).*)'],
 };

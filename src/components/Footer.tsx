@@ -9,34 +9,36 @@ import {
   Gamepad2,
   Heart,
 } from 'lucide-react';
+import { useSubdomain } from '@/context/SubdomainContext';
 
 const mainDomain = 'https://www.fancyletters.org';
-const isSubdomain = typeof window !== 'undefined' && window.location.hostname.split('.').length > 2;
-
-const NavLink = ({
-  href,
-  children,
-  className = '',
-}: {
-  href: string;
-  children: React.ReactNode;
-  className?: string;
-}) =>
-  isSubdomain ? (
-    <a href={`${mainDomain}${href}`} className={className}>
-      {children}
-    </a>
-  ) : (
-    <Link href={href} className={className}>
-      {children}
-    </Link>
-  );
 
 export default function Footer() {
+  const { isSubdomain } = useSubdomain();
+
+  const NavLink = ({
+    href,
+    children,
+    className = '',
+  }: {
+    href: string;
+    children: React.ReactNode;
+    className?: string;
+  }) =>
+    isSubdomain ? (
+      <a href={`${mainDomain}${href}`} className={className}>
+        {children}
+      </a>
+    ) : (
+      <Link href={href} className={className}>
+        {children}
+      </Link>
+    );
+
   return (
     <footer className="border-t mt-12 pt-6 pb-8 text-sm text-center text-gray-500">
       <div className="flex flex-wrap justify-center gap-12 mb-4 text-left max-w-5xl mx-auto">
-        {/* Column 1: Site Links */}
+        {/* Column 1 */}
         <div className="min-w-[160px]">
           <h4 className="font-semibold mb-2 text-gray-600">Site Links</h4>
           <ul className="space-y-1">
@@ -58,7 +60,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Column 2: Popular Fonts */}
+        {/* Column 2 */}
         <div className="min-w-[200px]">
           <h4 className="font-semibold mb-2 text-gray-600">Popular Fonts</h4>
           <ul className="space-y-1">
@@ -75,7 +77,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Column 3: Social Media */}
+        {/* Column 3 */}
         <div className="min-w-[220px]">
           <h4 className="font-semibold mb-2 text-gray-600">Connect With Us</h4>
           <ul className="space-y-1">
