@@ -64,7 +64,7 @@ export default function HomePage() {
 
   return (
     <main className="px-4 py-10 max-w-3xl lg:max-w-5xl mx-auto">
-      <h1 className="text-3xl font-bold text-center mb-2">Fancy Letters Generator 2025.</h1>
+      <h1 className="text-3xl font-bold text-center mb-2">Fancy Letters Generator 2025, FancyLetters.org</h1>
 
       <p className="text-center text-muted-foreground mb-8 text-sm sm:text-base">
         Create beautiful and stylish Unicode fonts for your Instagram bio, social handles, and more.

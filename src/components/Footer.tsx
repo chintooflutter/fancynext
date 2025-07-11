@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import {
   Info,
@@ -8,6 +10,28 @@ import {
   Heart,
 } from 'lucide-react';
 
+const mainDomain = 'https://www.fancyletters.org';
+const isSubdomain = typeof window !== 'undefined' && window.location.hostname.split('.').length > 2;
+
+const NavLink = ({
+  href,
+  children,
+  className = '',
+}: {
+  href: string;
+  children: React.ReactNode;
+  className?: string;
+}) =>
+  isSubdomain ? (
+    <a href={`${mainDomain}${href}`} className={className}>
+      {children}
+    </a>
+  ) : (
+    <Link href={href} className={className}>
+      {children}
+    </Link>
+  );
+
 export default function Footer() {
   return (
     <footer className="border-t mt-12 pt-6 pb-8 text-sm text-center text-gray-500">
@@ -17,19 +41,19 @@ export default function Footer() {
           <h4 className="font-semibold mb-2 text-gray-600">Site Links</h4>
           <ul className="space-y-1">
             <li>
-              <Link href="/about" className="hover:underline flex items-center gap-1.5">
+              <NavLink href="/about" className="hover:underline flex items-center gap-1.5">
                 <Info className="h-4 w-4 text-gray-400" /> About
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link href="/privacy" className="hover:underline flex items-center gap-1.5">
+              <NavLink href="/privacy" className="hover:underline flex items-center gap-1.5">
                 <ShieldCheck className="h-4 w-4 text-gray-400" /> Privacy
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link href="/disclaimer" className="hover:underline flex items-center gap-1.5">
+              <NavLink href="/disclaimer" className="hover:underline flex items-center gap-1.5">
                 <ScrollText className="h-4 w-4 text-gray-400" /> Disclaimer
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>
@@ -39,14 +63,14 @@ export default function Footer() {
           <h4 className="font-semibold mb-2 text-gray-600">Popular Fonts</h4>
           <ul className="space-y-1">
             <li>
-              <Link href="/aesthetic-fonts" className="hover:underline flex items-center gap-1.5">
+              <NavLink href="/aesthetic-fonts" className="hover:underline flex items-center gap-1.5">
                 <Star className="h-4 w-4 text-pink-400" /> Aesthetic Fonts
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link href="/fortnite-fonts" className="hover:underline flex items-center gap-1.5">
+              <NavLink href="/fortnite-fonts" className="hover:underline flex items-center gap-1.5">
                 <Gamepad2 className="h-4 w-4 text-indigo-400" /> Fortnite Fonts
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>

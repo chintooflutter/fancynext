@@ -5,22 +5,22 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import LayoutWrapper from '@/components/LayoutWrapper';
 
-const geistSans = Geist({ subsets: ['latin'], variable: '--font-geist-sans' });
-const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono' });
+const geistSans = Geist({ subsets: ['latin'], variable: '--font-geist-sans', display: 'swap'  });
+const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono', display: 'swap'  });
 
 export const metadata: Metadata = {
   title: {
-    default: 'FancyLetters.org – Stylish Text Generator',
+    default: 'Fancy Letters Generator 2025, FancyLetters.org',
     template: '%s | FancyLetters.org',
   },
-  description: 'Generate fancy letters and Unicode fonts for free using FancyLetters.org.',
+  description: 'Use fancy letters generator copy and paste for 2025. fancyletters.org is website with symbols and characters. Best online tool for write alphabet.',
   metadataBase: new URL('https://www.fancyletters.org'),
   openGraph: {
-    title: 'FancyLetters.org',
-    description: 'Generate stylish fonts and text for social media, bios, and more.',
+    title: 'Fancy Letters Generator 2025, FancyLetters.org',
+    description: 'Use fancy letters generator copy and paste for 2025. fancyletters.org is website with symbols and characters. Best online tool for write alphabet.',
     siteName: 'FancyLetters.org',
     type: 'website',
-    images: '/og-image.jpg',
+    images: '/fancy-letters-logo.png',
   },
   robots: {
     index: true,
@@ -31,6 +31,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <meta name="keywords" content="fancy letters, stylish text, unicode fonts, cool fonts, text generator, copy paste fonts" />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
         <Header />
         <LayoutWrapper>{children}</LayoutWrapper>
