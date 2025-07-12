@@ -23,7 +23,7 @@ export function middleware(request: NextRequest) {
   const isMainDomain =
     host === 'fancyletters.org' || host === 'www.fancyletters.org';
 
-  // ✅ Skip in dev/local mode
+  // ✅ Skip middleware in dev/local mode
   if (
     process.env.NODE_ENV !== 'production' ||
     host.includes('localhost') ||
@@ -33,14 +33,23 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // 🔁 Redirect main-domain-only pages to www.fancyletters.org
-  if (!isMainDomain && mainDomainOnlyPaths.includes(pathname)) {
+  // 🔁 Redirect requests for /robots.txt or /sitemap.xml from subdomains to main domain
+  if (!isMainDomain && ['/robots.txt', '/sitemap.xml'].includes(pathname)) {
     return NextResponse.redirect(
-      new URL(`https://www.fancyletters.org${pathname}`)
+      new URL(`https://www.fancyletters.org${pathname}`),
+      301
     );
   }
 
-  // ✅ Rewrite known subdomains to their paths
+  // 🔁 Redirect main-domain-only pages to www.fancyletters.org
+  if (!isMainDomain && mainDomainOnlyPaths.includes(pathname)) {
+    return NextResponse.redirect(
+      new URL(`https://www.fancyletters.org${pathname}`),
+      301
+    );
+  }
+
+  // ✅ Rewrite known subdomains to dynamic route
   if (validSubdomains.includes(subdomain)) {
     url.pathname = `/${subdomain}`;
     return NextResponse.rewrite(url);
@@ -48,7 +57,7 @@ export function middleware(request: NextRequest) {
 
   // 🚫 Redirect unknown subdomains to main homepage
   if (!isMainDomain && !validSubdomains.includes(subdomain)) {
-    return NextResponse.redirect(new URL('https://www.fancyletters.org/'));
+    return NextResponse.redirect(new URL('https://www.fancyletters.org/'), 301);
   }
 
   return NextResponse.next();
