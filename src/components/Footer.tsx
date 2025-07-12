@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import {
   Info,
   ShieldCheck,
@@ -9,32 +8,8 @@ import {
   Gamepad2,
   Heart,
 } from 'lucide-react';
-import { useSubdomain } from '@/context/SubdomainContext';
-
-const mainDomain = 'https://www.fancyletters.org';
 
 export default function Footer() {
-  const { isSubdomain } = useSubdomain();
-
-  const NavLink = ({
-    href,
-    children,
-    className = '',
-  }: {
-    href: string;
-    children: React.ReactNode;
-    className?: string;
-  }) =>
-    isSubdomain ? (
-      <a href={`${mainDomain}${href}`} className={className}>
-        {children}
-      </a>
-    ) : (
-      <Link href={href} className={className}>
-        {children}
-      </Link>
-    );
-
   return (
     <footer className="border-t mt-12 pt-6 pb-8 text-sm text-center text-gray-500">
       <div className="flex flex-wrap justify-center gap-12 mb-4 text-left max-w-5xl mx-auto">
@@ -43,19 +18,28 @@ export default function Footer() {
           <h4 className="font-semibold mb-2 text-gray-600">Site Links</h4>
           <ul className="space-y-1">
             <li>
-              <NavLink href="/about" className="hover:underline flex items-center gap-1.5">
+              <a
+                href="https://www.fancyletters.org/about"
+                className="hover:underline flex items-center gap-1.5"
+              >
                 <Info className="h-4 w-4 text-gray-400" /> About
-              </NavLink>
+              </a>
             </li>
             <li>
-              <NavLink href="/privacy" className="hover:underline flex items-center gap-1.5">
+              <a
+                href="https://www.fancyletters.org/privacy"
+                className="hover:underline flex items-center gap-1.5"
+              >
                 <ShieldCheck className="h-4 w-4 text-gray-400" /> Privacy
-              </NavLink>
+              </a>
             </li>
             <li>
-              <NavLink href="/disclaimer" className="hover:underline flex items-center gap-1.5">
+              <a
+                href="https://www.fancyletters.org/disclaimer"
+                className="hover:underline flex items-center gap-1.5"
+              >
                 <ScrollText className="h-4 w-4 text-gray-400" /> Disclaimer
-              </NavLink>
+              </a>
             </li>
           </ul>
         </div>
@@ -65,14 +49,20 @@ export default function Footer() {
           <h4 className="font-semibold mb-2 text-gray-600">Popular Fonts</h4>
           <ul className="space-y-1">
             <li>
-              <NavLink href="/aesthetic-fonts" className="hover:underline flex items-center gap-1.5">
+              <a
+                href="https://www.fancyletters.org/aesthetic-fonts"
+                className="hover:underline flex items-center gap-1.5"
+              >
                 <Star className="h-4 w-4 text-pink-400" /> Aesthetic Fonts
-              </NavLink>
+              </a>
             </li>
             <li>
-              <NavLink href="/fortnite-fonts" className="hover:underline flex items-center gap-1.5">
+              <a
+                href="https://www.fancyletters.org/fortnite-fonts"
+                className="hover:underline flex items-center gap-1.5"
+              >
                 <Gamepad2 className="h-4 w-4 text-indigo-400" /> Fortnite Fonts
-              </NavLink>
+              </a>
             </li>
           </ul>
         </div>

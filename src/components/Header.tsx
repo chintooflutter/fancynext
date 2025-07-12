@@ -17,14 +17,16 @@ export default function Header() {
   }: {
     href: string;
     children: React.ReactNode;
-  }) => (
-    <a
-      href={isSubdomain ? `${mainDomain}${href}` : href}
-      className="hover:text-blue-600"
-    >
-      {children}
-    </a>
-  );
+  }) =>
+    isSubdomain ? (
+      <a href={href} className="hover:text-blue-600">
+        {children}
+      </a>
+    ) : (
+      <Link href={href} className="hover:text-blue-600">
+        {children}
+      </Link>
+    );
 
   return (
     <header className="bg-white border-b shadow-sm">
@@ -40,9 +42,9 @@ export default function Header() {
 
         {/* ✅ Desktop Nav */}
         <nav className="hidden md:flex gap-6 text-sm font-medium text-gray-700">
-          <NavLink href="/about">About</NavLink>
-          <NavLink href="/privacy">Privacy</NavLink>
-          <NavLink href="/contact">Contact</NavLink>
+          <NavLink href="https://www.fancyletters.org/about">About</NavLink>
+          <NavLink href="https://www.fancyletters.org/privacy">Privacy</NavLink>
+          <NavLink href="https://www.fancyletters.org/contact">Contact</NavLink>
         </nav>
 
         {/* ✅ Hamburger Icon */}
@@ -58,9 +60,9 @@ export default function Header() {
       {isOpen && (
         <div className="md:hidden border-t px-4 pb-3">
           <nav className="flex flex-col gap-3 text-sm font-medium text-gray-700">
-            <NavLink href="/about">About</NavLink>
-            <NavLink href="/privacy">Privacy</NavLink>
-            <NavLink href="/contact">Contact</NavLink>
+            <NavLink href="https://www.fancyletters.org/about">About</NavLink>
+            <NavLink href="https://www.fancyletters.org/privacy">Privacy</NavLink>
+            <NavLink href="https://www.fancyletters.org/contact">Contact</NavLink>
           </nav>
         </div>
       )}
