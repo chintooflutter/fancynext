@@ -2,23 +2,23 @@
   "version": 2,
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/cutefonts/$1",
+      "source": "/",
+      "destination": "/cutefonts",
       "has": [{ "type": "host", "value": "cutefonts.fancyletters.org" }]
     },
     {
-      "source": "/(.*)",
-      "destination": "/cursivefonts/$1",
+      "source": "/",
+      "destination": "/cursivefonts",
       "has": [{ "type": "host", "value": "cursivefonts.fancyletters.org" }]
     },
     {
-      "source": "/(.*)",
-      "destination": "/coolfonts/$1",
+      "source": "/",
+      "destination": "/coolfonts",
       "has": [{ "type": "host", "value": "coolfonts.fancyletters.org" }]
     },
     {
-      "source": "/(.*)",
-      "destination": "/tattoofonts/$1",
+      "source": "/",
+      "destination": "/tattoofonts",
       "has": [{ "type": "host", "value": "tattoofonts.fancyletters.org" }]
     },
     {
