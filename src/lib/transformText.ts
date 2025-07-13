@@ -11,6 +11,7 @@ import { aestheticMaps } from './fontMaps/aesthetic';
 import { cuteMaps } from './fontMaps/cute';
 import { tattooMaps } from './fontMaps/tattoo';
 import { cursiveMaps } from './fontMaps/cursive';
+import { coolMaps } from './fontMaps/cool';
 import { fortniteMaps } from './fontMaps/fortnite';
 import { weird1Map } from '@/lib/fontMaps/weird1';
 import { boldgothMap } from '@/lib/fontMaps/boldgoth';
@@ -26,6 +27,7 @@ const dynamicCharMaps: Record<string, Record<number, CharMap>> = {
   cute: cuteMaps,
   tattoo: tattooMaps,
   cursive: cursiveMaps,
+  cool: coolMaps,
   fortnite: fortniteMaps,
 };
 
@@ -51,7 +53,7 @@ function resolveFontTransformer(style: FontStyle):
   }
 
   // ✅ Case 2: Handle dynamic numbered styles (like aesthetic12)
-  const match = style.match(/^(aesthetic|cute|tattoo|cursive|fortnite)(\d{1,2})?$/);
+  const match = style.match(/^(aesthetic|cute|tattoo|cursive|cool|fortnite)(\d{1,2})?$/);
   if (match) {
     const [, category, numberStr] = match;
     const index = parseInt(numberStr || '1', 10);

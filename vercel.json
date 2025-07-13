@@ -13,6 +13,11 @@
     },
     {
       "source": "/(.*)",
+      "destination": "/coolfonts/$1",
+      "has": [{ "type": "host", "value": "coolfonts.fancyletters.org" }]
+    },
+    {
+      "source": "/(.*)",
       "destination": "/tattoofonts/$1",
       "has": [{ "type": "host", "value": "tattoofonts.fancyletters.org" }]
     },
@@ -40,6 +45,7 @@
         { "type": "host", "value": "cutefonts.fancyletters.org" },
         { "type": "host", "value": "cursivefonts.fancyletters.org" },
         { "type": "host", "value": "tattoofonts.fancyletters.org" },
+        { "type": "host", "value": "coolfonts.fancyletters.org" },
         { "type": "host", "value": "fancyletters.org" },
         { "type": "host", "value": "www.fancyletters.org" }
       ],
