@@ -23,12 +23,12 @@
   ],
   "redirects": [
     {
-      "source": "/(about|privacy|disclaimer|contact|aesthetic-fonts|fortnite-fonts)",
+      "source": "/:path(about|privacy|disclaimer|contact|aesthetic-fonts|fortnite-fonts)",
       "has": [
         { "type": "host", "value": "!fancyletters.org" },
         { "type": "host", "value": "!www.fancyletters.org" }
       ],
-      "destination": "https://www.fancyletters.org/:path*",
+      "destination": "https://www.fancyletters.org/:path",
       "permanent": false
     },
     {
