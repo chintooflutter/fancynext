@@ -1,82 +1,14 @@
 {
   "version": 2,
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/cutefonts",
-      "has": [{ "type": "host", "value": "cutefonts.fancyletters.org" }]
-    },
-    {
-      "source": "/",
-      "destination": "/cursivefonts",
-      "has": [{ "type": "host", "value": "cursivefonts.fancyletters.org" }]
-    },
-    {
-      "source": "/",
-      "destination": "/coolfonts",
-      "has": [{ "type": "host", "value": "coolfonts.fancyletters.org" }]
-    },
-    {
-      "source": "/",
-      "destination": "/tattoofonts",
-      "has": [{ "type": "host", "value": "tattoofonts.fancyletters.org" }]
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/$1"
-    }
-  ],
-  "redirects": [
-    {
-      "source": "/:path(about|privacy|disclaimer|contact|aesthetic-fonts|fortnite-fonts)",
-      "has": [
-        { "type": "host", "value": "!fancyletters.org" },
-        { "type": "host", "value": "!www.fancyletters.org" }
-      ],
-      "destination": "https://www.fancyletters.org/:path",
-      "permanent": false
-    },
-    {
-      "source": "/(.*)",
-      "has": [
-        { "type": "host", "value": ":sub.fancyletters.org" }
-      ],
-      "missing": [
-        { "type": "host", "value": "cutefonts.fancyletters.org" },
-        { "type": "host", "value": "cursivefonts.fancyletters.org" },
-        { "type": "host", "value": "tattoofonts.fancyletters.org" },
-        { "type": "host", "value": "coolfonts.fancyletters.org" },
-        { "type": "host", "value": "fancyletters.org" },
-        { "type": "host", "value": "www.fancyletters.org" }
-      ],
-      "destination": "https://www.fancyletters.org/",
-      "permanent": false
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "SAMEORIGIN"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     }
   ],
