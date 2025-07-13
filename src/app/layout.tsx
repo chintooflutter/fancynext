@@ -1,3 +1,4 @@
+// src/app/layout.tsx
 import type { Metadata } from 'next';
 import { headers } from 'next/headers';
 import { Geist, Geist_Mono } from 'next/font/google';
@@ -5,7 +6,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import LayoutWrapper from '@/components/LayoutWrapper';
-import { SubdomainProvider } from '@/context/SubdomainContext'; // ✅ use SubdomainProvider
+import { SubdomainProvider } from '@/context/SubdomainContext';
 
 const geistSans = Geist({ subsets: ['latin'], variable: '--font-geist-sans', display: 'swap' });
 const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono', display: 'swap' });
@@ -37,11 +38,10 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // ✅ Await async headers() properly
   const headersList = await headers();
   const host = headersList.get('host') || '';
-  const isSubdomain =
-    host && !host.includes('fancyletters.org') ? true : false;
+  const parts = host.split('.');
+  const subdomain = parts.length > 2 ? parts[0] : null;
 
   return (
     <html lang="en">
@@ -52,7 +52,7 @@ export default async function RootLayout({
         />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
-        <SubdomainProvider isSubdomain={isSubdomain}>
+        <SubdomainProvider initialSubdomain={subdomain}>
           <Header />
           <LayoutWrapper>{children}</LayoutWrapper>
           <Footer />

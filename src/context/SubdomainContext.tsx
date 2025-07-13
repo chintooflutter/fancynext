@@ -1,3 +1,5 @@
+// src/context/SubdomainContext.tsx
+
 'use client';
 
 import {
@@ -10,35 +12,41 @@ import {
 
 type SubdomainContextType = {
   isSubdomain: boolean;
+  subdomain: string | null;
 };
 
 const SubdomainContext = createContext<SubdomainContextType>({
-  isSubdomain: false, // Default fallback
+  isSubdomain: false,
+  subdomain: null,
 });
 
 export function SubdomainProvider({
   children,
-  isSubdomain: initialIsSubdomain,
+  initialSubdomain,
 }: {
   children: ReactNode;
-  isSubdomain: boolean;
+  initialSubdomain: string | null;
 }) {
-  const [isSubdomain, setIsSubdomain] = useState<boolean>(initialIsSubdomain);
+  const [subdomain, setSubdomain] = useState<string | null>(initialSubdomain);
 
-  // ✅ Client-side check fallback (in case of hydration mismatch)
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const host = window.location.hostname;
-      const clientSub = !!host && !host.includes('fancyletters.org'); // force boolean
-
-      if (clientSub !== isSubdomain) {
-        setIsSubdomain(clientSub);
+      const parts = host.split('.');
+      const clientSub = parts.length > 2 ? parts[0] : null;
+      if (clientSub !== subdomain) {
+        setSubdomain(clientSub);
       }
     }
-  }, [isSubdomain]);
+  }, [subdomain]);
 
   return (
-    <SubdomainContext.Provider value={{ isSubdomain }}>
+    <SubdomainContext.Provider
+      value={{
+        isSubdomain: !!subdomain,
+        subdomain,
+      }}
+    >
       {children}
     </SubdomainContext.Provider>
   );
@@ -47,5 +55,3 @@ export function SubdomainProvider({
 export function useSubdomain() {
   return useContext(SubdomainContext);
 }
-
-export { SubdomainContext }; // 👈 Exported for use in layout.tsx if needed
