@@ -19,6 +19,8 @@ export type FontStyle =
   | `cursive${NumRange20}`
   | 'cute'
   | `cute${NumRange20}`
+  | 'cool'
+  | `cool${NumRange20}`
   | 'fortnite'
   | `fortnite${NumRange20}`
   | 'fullwidth'
@@ -48,6 +50,7 @@ export type FontCategory =
   | 'Cursive'
   | 'Code Style'
   | 'Fortnite'
+  | 'Cool'
   | 'Aesthetic';
 
 // Used for font definitions in per-page or global font lists

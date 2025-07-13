@@ -7,6 +7,12 @@ export function GET() {
 User-agent: *
 Allow: /
 
+Disallow: /_next/
+Disallow: /api/
+Disallow: /404
+Disallow: /500
+
+
 Sitemap: https://www.fancyletters.org/sitemap.xml
 Sitemap: https://cutefonts.fancyletters.org/sitemap.xml
 Sitemap: https://cursivefonts.fancyletters.org/sitemap.xml
